@@ -13,5 +13,7 @@
 #include <stdio.h>
 
 void Afficher_plateau_text(int plateau[H][H]);
+void Dessine_plateau_graph(int plateau[H][H], int joueurCourant);
+void clear_screen();
 
 #endif /* Affichage_h */

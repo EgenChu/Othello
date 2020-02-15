@@ -14,7 +14,7 @@
 int EvaluerPlateau_0(int plateau[H][H])
     {
     int i,j;
-    int res =0;
+    int res = 0;
     /*A Completer*/
     return res;
     }

@@ -96,20 +96,20 @@ int Partie_terminee(int plateau[H][H])
     return 1;
     }
 
-//Renvoie la liste des position jouables
+//Renvoie la liste des positions jouables
 PosJouable_t *Trouver_liste_pos_jouables(int plateau[H][H], int couleurQuiJoue)
     {
-        PosJouable_t *listePos= (PosJouable_t *) malloc(sizeof(PosJouable_t));
+        PosJouable_t *listePos = NULL;
         int i = 0, j = 0;
         for(i = 0; i < H; i++)
         {
             for(j = 0; j < H; j++)
             {
-                if(Est_jouable_gain(plateau, i, j, couleurQuiJoue))
+                if(Est_jouable_gain(plateau, i, j, couleurQuiJoue)){
                     listePos = Inserer(listePos, i, j);
+                }
             }
         }
-    
         return listePos;
     }
 
