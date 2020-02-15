@@ -12,7 +12,16 @@
 
 int main(int argc, const char * argv[]) {
     
+    int joueurCourant = NOIR; //Toujours le noir commence
     int plateau[H][H];
+    
+    int Mode;
+    int NbN, NbB;
+    PosJouable_t *listeJouable;
+    
+    int i, j;
+    int Niveau[2];
+    
     
     Initialiser_plateau(plateau);
     Afficher_plateau_text(plateau);
