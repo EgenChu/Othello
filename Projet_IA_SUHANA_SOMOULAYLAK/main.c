@@ -15,9 +15,6 @@ int main(int argc, const char * argv[]) {
     int plateau[H][H];
     
     Initialiser_plateau(plateau);
-    
-    printf("Hello World what are you doing ?"); 
-    
     Afficher_plateau_text(plateau);
     
     return 0;
