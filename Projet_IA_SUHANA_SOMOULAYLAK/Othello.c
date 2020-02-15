@@ -105,7 +105,7 @@ PosJouable_t *Trouver_liste_pos_jouables(int plateau[H][H], int couleurQuiJoue)
         {
             for(j = 0; j < H; j++)
             {
-                if(Est_jouable_gain(plateau, i, j, couleurQuiJoue)){
+                if(Est_jouable_gain(plateau, i, j, couleurQuiJoue) && plateau[i][j] == VIDE){
                     listePos = Inserer(listePos, i, j);
                 }
             }

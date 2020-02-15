@@ -39,6 +39,7 @@ int main(int argc, const char * argv[]) {
             {
                 do
                 {
+                    Afficher_lPosJouables(listeJouable);
                     printf("--------------------\n");
                     printf("Ligne de la case : ");
                     scanf("%d",&i);
@@ -51,7 +52,9 @@ int main(int argc, const char * argv[]) {
         
         Jouer_pion(plateau, i, j, joueurCourant);
         Dessine_plateau_graph(plateau, joueurCourant);
+        listeJouable = Detruire_liste(listeJouable);
         
+        Afficher_lPosJouables(listeJouable);
         joueurCourant = Autre_joueur(joueurCourant);
     }
     
