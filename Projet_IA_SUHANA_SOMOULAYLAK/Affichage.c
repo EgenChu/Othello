@@ -13,9 +13,9 @@
 void Afficher_plateau_text(int plateau[H][H])
 {
   int i,j;
-  printf("\n 0|1|2|3|4|5|6|7|\n");
+  printf("\n   0|1|2|3|4|5|6|7|\n");
   for(i=0;i<H;i++){
-    printf("%d", i);
+    printf("%d |", i);
     for(j=0;j<H; j++){
       switch(plateau[i][j]){
         case VIDE: printf(" |"); break;
@@ -26,12 +26,12 @@ void Afficher_plateau_text(int plateau[H][H])
     }
     printf("*\n");
   }
-  printf("-----------------\n");
+    printf("--------------------\n");
 }
 
 void Dessine_plateau_graph(int plateau[H][H], int joueurCourant)
 {
-//    clear_screen();
+    clear_screen();
     Afficher_plateau_text(plateau);
 }
 
