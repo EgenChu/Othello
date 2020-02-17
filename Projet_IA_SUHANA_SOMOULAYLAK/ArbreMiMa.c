@@ -15,7 +15,16 @@ int EvaluerPlateau_0(int plateau[H][H])
     {
     int i,j;
     int res = 0;
-    /*A Completer*/
+        for(i = 0; i < H;i++){
+            for(j = 0;i<H;j++){
+                if (plateau[i][j] == NOIR) {
+                    res++;
+                }
+                else if(plateau[i][j] == BLANC){
+                    res--;
+                }
+            }
+        }
     return res;
     }
 
@@ -76,23 +85,55 @@ NdMiMa_t *Construire_arbre(int plateau[H][H], int prof, int couleurQuiJoue)
                 temp = temp->suiv;
             }
         }
-        
     return noeud;
     }
 
 int MinMax(NdMiMa_t *arbre, int plateau[H][H], int (*EvaluerPlateau)(int plateau[H][H]))
     {
-    /*A Completer*/
-    int min = 0;
-    return min;
+        int min;
+        int max;
+        int eval;
+        printf(arbre == NULL ? "OUI NULL\n" : "NON PAS NULL\n");
+        PosJouable_t *temp = arbre->liste_pos;
+        if(arbre->Couleur == NOIR){
+            max = -1000;
+            if(temp){
+                while(temp){
+                    eval = MinMax(temp->Nd, plateau, *EvaluerPlateau);
+                    max = MAX(eval, max);
+                    printf("max : %d",max);
+                    temp = temp->suiv;
+                }
+                return max;
+            }
+            else{
+             return EvaluerPlateau(plateau);
+            }
+        }
+        else {
+            min = 1000;
+            if(temp){
+                while(temp){
+                    eval = MinMax(temp->Nd, plateau, *EvaluerPlateau);
+                    min = MIN(eval, min);
+                      printf("min : %d",min);
+                    temp = temp->suiv;
+                }
+                return min;
+            }
+            else{
+             return EvaluerPlateau(plateau);
+            }
+        }
     }
 
 int MeilleurPos(NdMiMa_t *arbre, int plateau[H][H], int (*EvaluerPlateau)(int plateau[H][H]),int *pi, int *pj)
     {
     *pi = 0;
     *pj = 0;
-
-    /*A Completer*/
+        
+    MinMax(arbre, plateau, *EvaluerPlateau);
+        
     return 0;
     }
 

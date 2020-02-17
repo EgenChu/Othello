@@ -13,6 +13,9 @@
 
 #include "Othello.h"
 
+#define MIN(X, Y) (((X) < (Y)) ? (X) : (Y))
+#define MAX(X, Y) (((X) > (Y)) ? (X) : (Y))
+
 typedef struct _NdMiMa_t
     {
     int Couleur; // Blanc ou noir joue
@@ -22,6 +25,7 @@ typedef struct _NdMiMa_t
 
 NdMiMa_t *Construire_arbre(int plateau[H][H], int prof, int couleurQuiJoue);
 int MeilleurPos(NdMiMa_t *arbre, int plateau[H][H], int (*EvaluerPlateau)(int plateau[H][H]),int *pi, int *pj);
+int MinMax(NdMiMa_t *arbre, int plateau[H][H], int (*EvaluerPlateau)(int plateau[H][H]));
 NdMiMa_t *Detruire_arbre(NdMiMa_t *arbre);
 int EvaluerPlateau_0(int plateau[H][H]);
 int EvaluerPlateau_1(int plateau[H][H]);

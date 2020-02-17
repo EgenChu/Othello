@@ -37,7 +37,9 @@ int main(int argc, const char * argv[]) {
     Dessine_plateau_graph(plateau, joueurCourant);
     
     if (mode == 1) {
-        NdMiMa_t *arbre = Construire_arbre(plateau, 3, joueurCourant);
+        NdMiMa_t *arbre = Construire_arbre(plateau, 2, joueurCourant);
+        MinMax(arbre, plateau, EvaluerPlateau_0);
+
     }
     else {
     while (Partie_terminee(plateau) == 0)
