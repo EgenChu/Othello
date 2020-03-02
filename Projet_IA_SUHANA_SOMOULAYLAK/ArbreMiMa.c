@@ -57,9 +57,11 @@ NdMiMa_t *Construire_arbre(int plateau[H][H], int prof, int couleurQuiJoue)
         switch (couleurQuiJoue) {
             case NOIR:
                 noeud->JoueurBloque = Construire_arbre(plateau, prof-1, BLANC);
+                printf("Le joueur Noir est bloqué");
                 break;
             case BLANC:
                 noeud->JoueurBloque = Construire_arbre(plateau, prof-1, NOIR);
+                printf("Le joueur Blanc est bloqué");
                 break;
             default:
                 printf("Il y a une erreur dans Construire_ArbreMiMa.C");
