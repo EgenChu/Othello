@@ -11,6 +11,7 @@
 #include "Othello.h"
 #include "Affichage.h"
 #include "ArbreMiMa.h"
+#include "unistd.h"
 
 int main(int argc, const char * argv[]) {
     
@@ -36,12 +37,12 @@ int main(int argc, const char * argv[]) {
     
     Dessine_plateau_graph(plateau, joueurCourant);
     
-    if (mode == 1) {
-        NdMiMa_t *arbre = Construire_arbre(plateau, 2, joueurCourant);
-        MinMax(arbre, plateau, EvaluerPlateau_0);
-
-    }
-    else {
+//    if (mode == 1) {
+//        NdMiMa_t *arbre = Construire_arbre(plateau, 2, joueurCourant);
+//        MinMax(arbre, plateau, EvaluerPlateau_0);
+//
+//    }
+//    else {
     while (Partie_terminee(plateau) == 0)
     {
         printf("SCORE : NOIR * : %d  BLANC O : %d | ",NbN,NbB);
@@ -50,7 +51,7 @@ int main(int argc, const char * argv[]) {
         printf(" de jouer\n");
         
         if((listeJouable = Trouver_liste_pos_jouables(plateau, joueurCourant))){
-            if(mode == 0 ) //|| ( mode == 1 && joueurCourant==NOIR)
+            if(mode == 0 || (mode == 1 && joueurCourant == NOIR)) //|| ( mode == 1 && joueurCourant==NOIR)
             {
                 do
                 {
@@ -72,6 +73,12 @@ int main(int argc, const char * argv[]) {
                     
                 } while (!Est_dans_liste(listeJouable, i , j));
             }
+            else {
+                sleep(1);
+                NdMiMa_t *arbreMiMa = Construire_arbre(plateau, 2, joueurCourant);
+                MeilleurPos(arbreMiMa, plateau, EvaluerPlateau_0, &i, &j);
+                arbreMiMa = Detruire_arbre(arbreMiMa);
+            }
         }
         
         Jouer_pion(plateau, i, j, joueurCourant);
@@ -82,18 +89,17 @@ int main(int argc, const char * argv[]) {
         joueurCourant = Autre_joueur(joueurCourant);
     }
     
-    Nb_pions(plateau, &NbN, &NbB);
-    printf("Partie terminee !!! \n");
-    if (NbN > NbB)
-      printf("Les noirs ont gagne par %d contre %d\n", NbN, NbB);
-    else
-      {
-      if (NbN == NbB)
-        printf("Ex-aequo par %d contre %d\n", NbN, NbB);
-      else
-        printf("Les blancs ont gagne par %d contre %d\n", NbB, NbN);
-      }
-        
-    }
+//    Nb_pions(plateau, &NbN, &NbB);
+//    printf("Partie terminee !!! \n");
+//    if (NbN > NbB)
+//      printf("Les noirs ont gagne par %d contre %d\n", NbN, NbB);
+//    else
+//      {
+//      if (NbN == NbB)
+//        printf("Ex-aequo par %d contre %d\n", NbN, NbB);
+//      else
+//        printf("Les blancs ont gagne par %d contre %d\n", NbB, NbN);
+//      }
+//
     return 0;
 }
